@@ -1,0 +1,19 @@
+---
+uuid: ef8ac0e9-9d17-4f30-a5ea-bc4f4e7eece4
+timestamp: 2026-05-23 18:38:46.978313
+scrape_config:
+  dataset: questions
+  dataset_path: datasets/questions
+  dataset_version: null
+  model_id: qwen3.5-2b
+  model_output_path: reports/questions/2026.2.3
+version: 2026.2.3
+context:
+  user: nickmowen
+  argv:
+  - /Users/nickmowen/DocumentationProjects/home-assistant-datasets/.venv/lib/python3.14/site-packages/pytest/__main__.py
+  - home_assistant_datasets/tool/assist/collect
+  - --models=qwen3.5-2b
+  - --dataset=datasets/questions
+  - --model_output_dir=reports/questions/2026.2.3
+notes: ''

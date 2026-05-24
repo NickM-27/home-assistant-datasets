@@ -1,0 +1,652 @@
+---
+uuid: 6d61f00f-c8d9-4bd4-83a1-72119de88c6b
+task_id: dom1_pl_todo-put_apples_on_the_shopping_list-2
+model_id: qwen3.5-2b
+category: todo
+task:
+  input_text: put apples on the shopping list
+  expect_changes:
+    todo.trader_joe_s:
+      state: '1'
+      attributes: null
+response: Unable to get response
+context:
+  unexpected_states:
+    todo.trader_joe_s:
+      expected:
+        state: '1'
+      got:
+        state: '0'
+  conversation_trace:
+  - event_type: async_process
+    data:
+      text: put apples on the shopping list
+      context:
+        id: 01KSBN83Z5PHEB486MVSY03BWZ
+        parent_id: null
+        user_id: null
+      conversation_id: null
+      device_id: null
+      satellite_id: null
+      language: en
+      agent_id: conversation.mock_title
+      extra_system_prompt: null
+    timestamp: 2026-05-24 00:13:07.429789+00:00
+  - event_type: agent_detail
+    data:
+      messages:
+      - role: system
+        content: |
+          You are a voice assistant for Home Assistant.
+          Answer questions about the world truthfully.
+          Answer in plain text. Keep it simple and to the point.
+          When controlling Home Assistant always call the intent tools. Use HassTurnOn to lock and HassTurnOff to unlock a lock. When controlling a device, prefer passing just name and domain. When controlling an area, prefer passing just area name and domain.
+          When a user asks to turn on all devices of a specific type, ask user to specify an area, unless there is only one device of that type.
+          This device is not able to start timers.
+          You ARE equipped to answer questions about the current state of
+          the home using the `GetLiveContext` tool. This is a primary function. Do not state you lack the
+          functionality if the question requires live data.
+          If the user asks about device existence/type (e.g., "Do I have lights in the bedroom?"): Answer
+          from the static context below.
+          If the user asks about the CURRENT state, value, or mode (e.g., "Is the lock locked?",
+          "Is the fan on?", "What mode is the thermostat in?", "What is the temperature outside?"):
+              1.  Recognize this requires live data.
+              2.  You MUST call `GetLiveContext`. This tool will provide the needed real-time information (like temperature from the local weather, lock status, etc.).
+              3.  Use the tool's response** to answer the user accurately (e.g., "The temperature outside is [value from tool].").
+          For general knowledge questions not about the home: Answer truthfully from internal knowledge.
+
+          Static Context: An overview of the areas and the devices in this smart home:
+          - names: Bedroom 1 Light
+            domain: light
+            areas: Bedroom 1
+          - names: Bedroom 1 Thermostat
+            domain: climate
+            areas: Bedroom 1
+          - names: Bedroom 1 Thermostat Humidity
+            domain: sensor
+            areas: Bedroom 1
+          - names: Bedroom 1 Thermostat Temperature
+            domain: sensor
+            areas: Bedroom 1
+          - names: Bedroom 2 Light
+            domain: light
+            areas: Bedroom 2
+          - names: Bedroom 3 Light
+            domain: light
+            areas: Bedroom 3
+          - names: Bedroom 4 Light
+            domain: light
+            areas: Bedroom 4
+          - names: Coffee Maker
+            domain: switch
+            areas: Kitchen
+          - names: Coffee Maker Energy
+            domain: sensor
+            areas: Kitchen
+          - names: Dining Room Light
+            domain: light
+            areas: Dining Room
+          - names: Garage Camera Motion
+            domain: binary_sensor
+            areas: Garage
+          - names: Garage Camera Person
+            domain: binary_sensor
+            areas: Garage
+          - names: Garage Camera Sound
+            domain: binary_sensor
+            areas: Garage
+          - names: Garage Door Opener
+            domain: cover
+            areas: Garage
+          - names: Garage Door Opener
+            domain: light
+            areas: Garage
+          - names: Garden Light
+            domain: light
+            areas: Backyard
+          - names: Kitchen Light
+            domain: light
+            areas: Kitchen
+          - names: Living Room Light
+            domain: light
+            areas: Living Room
+          - names: Motion Sensor
+            domain: binary_sensor
+            areas: Backyard
+          - names: Motion Sensor Battery
+            domain: binary_sensor
+            areas: Backyard
+          - names: Motion Sensor Battery
+            domain: sensor
+            areas: Backyard
+          - names: Personal Tasks
+            domain: todo
+          - names: Smart Speaker
+            domain: media_player
+            areas: Living Room
+          - names: Thermostat
+            domain: climate
+            areas: Kitchen
+          - names: Thermostat Humidity
+            domain: sensor
+            areas: Kitchen
+          - names: Thermostat Temperature
+            domain: sensor
+            areas: Kitchen
+          - names: Trader Joe's
+            domain: todo
+          - names: Tv
+            domain: switch
+            areas: Living Room
+          - names: Tv Energy
+            domain: sensor
+            areas: Living Room
+        created: 2026-05-24 00:13:07.433282+00:00
+      - role: user
+        content: put apples on the shopping list
+        attachments: null
+        created: 2026-05-24 00:13:07.429843+00:00
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: |+
+          I'll add apples to your shopping list.
+
+        thinking_content: null
+        tool_calls:
+        - tool_name: HassListAddItem
+          tool_args:
+            item: apples
+            name: shopping list
+          id: bcRrQkDUgRPj4J6CpPlqM0qcQ596kIfK
+          external: false
+        native: null
+        created: 2026-05-24 00:13:08.336191+00:00
+      - role: tool_result
+        agent_id: conversation.mock_title
+        tool_call_id: bcRrQkDUgRPj4J6CpPlqM0qcQ596kIfK
+        tool_name: HassListAddItem
+        tool_result:
+          error: MatchFailedError
+          error_text: '<MatchFailedError result=MatchTargetsResult(is_match=False,
+            no_match_reason=<MatchFailedReason.NAME: 1>, states=[], no_match_name=None,
+            areas=[], floors=[]), constraints=MatchTargetsConstraints(name=''shopping
+            list'', area_name=None, floor_name=None, domains=[''todo''], device_classes=None,
+            features=None, states=None, assistant=''conversation'', allow_duplicate_names=False,
+            single_target=False), preferences=None>'
+        created: 2026-05-24 00:13:08.336413+00:00
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: |+
+          I need to add an item to the shopping list. Let me try again with the correct item name.
+
+        thinking_content: null
+        tool_calls:
+        - tool_name: HassListAddItem
+          tool_args:
+            item: apples
+            name: apples
+          id: spuAMlD1Rmuaiagulscf19qfVBYPx9hr
+          external: false
+        native: null
+        created: 2026-05-24 00:13:09.559068+00:00
+      - role: tool_result
+        agent_id: conversation.mock_title
+        tool_call_id: spuAMlD1Rmuaiagulscf19qfVBYPx9hr
+        tool_name: HassListAddItem
+        tool_result:
+          error: MatchFailedError
+          error_text: '<MatchFailedError result=MatchTargetsResult(is_match=False,
+            no_match_reason=<MatchFailedReason.NAME: 1>, states=[], no_match_name=None,
+            areas=[], floors=[]), constraints=MatchTargetsConstraints(name=''apples'',
+            area_name=None, floor_name=None, domains=[''todo''], device_classes=None,
+            features=None, states=None, assistant=''conversation'', allow_duplicate_names=False,
+            single_target=False), preferences=None>'
+        created: 2026-05-24 00:13:09.559213+00:00
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: |+
+          Let me try adding an item to the Personal Tasks todo list instead, as that seems to be the correct domain for shopping lists.
+
+        thinking_content: null
+        tool_calls:
+        - tool_name: todo_get_items
+          tool_args:
+            todo_list: Personal Tasks
+            status: all
+          id: hN3gmpiqOoFI6zGeFul2eBpkQiDr1eB4
+          external: false
+        native: null
+        created: 2026-05-24 00:13:10.844243+00:00
+      - role: tool_result
+        agent_id: conversation.mock_title
+        tool_call_id: hN3gmpiqOoFI6zGeFul2eBpkQiDr1eB4
+        tool_name: todo_get_items
+        tool_result:
+          success: true
+          result: []
+        created: 2026-05-24 00:13:10.844403+00:00
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: |+
+          The Personal Tasks list is empty. Let me check the Trader Joe's list as well.
+
+        thinking_content: null
+        tool_calls:
+        - tool_name: todo_get_items
+          tool_args:
+            todo_list: Trader Joe's
+            status: all
+          id: UoDNjoa4stVx5uMraNx27elhn45MSUKq
+          external: false
+        native: null
+        created: 2026-05-24 00:13:11.934705+00:00
+      - role: tool_result
+        agent_id: conversation.mock_title
+        tool_call_id: UoDNjoa4stVx5uMraNx27elhn45MSUKq
+        tool_name: todo_get_items
+        tool_result:
+          success: true
+          result: []
+        created: 2026-05-24 00:13:11.934919+00:00
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: |+
+          Both lists are empty. It seems these todo lists don't have any items yet. There might be an issue with the system or the lists might not be properly configured. Let me try adding an item using the correct format.
+
+          Looking at the error message, it seems the system expects specific formats. Let me try a different approach by using the TodoListAddItem function directly.
+
+        thinking_content: null
+        tool_calls:
+        - tool_name: HassListAddItem
+          tool_args:
+            item: apples
+            name: apples
+          id: jLgWAObMl9tpaRBZU43NB5triA9416PR
+          external: false
+        native: null
+        created: 2026-05-24 00:13:13.974726+00:00
+      - role: tool_result
+        agent_id: conversation.mock_title
+        tool_call_id: jLgWAObMl9tpaRBZU43NB5triA9416PR
+        tool_name: HassListAddItem
+        tool_result:
+          error: MatchFailedError
+          error_text: '<MatchFailedError result=MatchTargetsResult(is_match=False,
+            no_match_reason=<MatchFailedReason.NAME: 1>, states=[], no_match_name=None,
+            areas=[], floors=[]), constraints=MatchTargetsConstraints(name=''apples'',
+            area_name=None, floor_name=None, domains=[''todo''], device_classes=None,
+            features=None, states=None, assistant=''conversation'', allow_duplicate_names=False,
+            single_target=False), preferences=None>'
+        created: 2026-05-24 00:13:13.974896+00:00
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: |+
+          The error suggests I need to provide a specific format. Looking at the constraints, it seems like the system expects items to have specific properties. However, I don't see a function to directly add items to a todo list. The function `HassListAddItem` is for adding items to a to-do list, but it seems the system is not recognizing my input.
+
+          Let me try with a simpler format or check if there's an issue with the system. Perhaps I should try using the Shopping List function differently.
+
+          Actually, looking at the error more carefully, it seems the system is having trouble with the item name format. The constraint shows that the name should be 'apples' but it's not matching. Let me try adding an item with a simpler name or description.
+
+          Wait, I notice the error message mentions "domains=['todo']", which suggests there's a specific todo domain. Let me try adding an item with a more generic name that might work.
+
+        thinking_content: null
+        tool_calls:
+        - tool_name: HassListAddItem
+          tool_args:
+            item: shopping
+            name: shopping list
+          id: JDTA4Uo5Zusw0FtNtxDaXqlf6Zi0I9vq
+          external: false
+        native: null
+        created: 2026-05-24 00:13:18.108476+00:00
+      - role: tool_result
+        agent_id: conversation.mock_title
+        tool_call_id: JDTA4Uo5Zusw0FtNtxDaXqlf6Zi0I9vq
+        tool_name: HassListAddItem
+        tool_result:
+          error: MatchFailedError
+          error_text: '<MatchFailedError result=MatchTargetsResult(is_match=False,
+            no_match_reason=<MatchFailedReason.NAME: 1>, states=[], no_match_name=None,
+            areas=[], floors=[]), constraints=MatchTargetsConstraints(name=''shopping
+            list'', area_name=None, floor_name=None, domains=[''todo''], device_classes=None,
+            features=None, states=None, assistant=''conversation'', allow_duplicate_names=False,
+            single_target=False), preferences=None>'
+        created: 2026-05-24 00:13:18.108608+00:00
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: |+
+          I see the issue now. The system is expecting the item name to not include the "shopping list" text. The constraint shows that the domain is 'todo' and the item name should just be 'shopping list', but it seems the system is expecting something different.
+
+          Let me try with just a simple item name without the "shopping list" prefix.
+
+        thinking_content: null
+        tool_calls:
+        - tool_name: HassListAddItem
+          tool_args:
+            item: apples
+            name: shopping list
+          id: Q0FSvDDUtUowDBGawNF9alAqplaek6Y5
+          external: false
+        native: null
+        created: 2026-05-24 00:13:20.408112+00:00
+      - role: tool_result
+        agent_id: conversation.mock_title
+        tool_call_id: Q0FSvDDUtUowDBGawNF9alAqplaek6Y5
+        tool_name: HassListAddItem
+        tool_result:
+          error: MatchFailedError
+          error_text: '<MatchFailedError result=MatchTargetsResult(is_match=False,
+            no_match_reason=<MatchFailedReason.NAME: 1>, states=[], no_match_name=None,
+            areas=[], floors=[]), constraints=MatchTargetsConstraints(name=''shopping
+            list'', area_name=None, floor_name=None, domains=[''todo''], device_classes=None,
+            features=None, states=None, assistant=''conversation'', allow_duplicate_names=False,
+            single_target=False), preferences=None>'
+        created: 2026-05-24 00:13:20.408319+00:00
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: |+
+          I'm having trouble with the item name format. Let me try a different approach. Perhaps the system expects the item to be added with a specific format or the name field should be used differently.
+
+          Looking at the error, it seems like the system is trying to match the item name against constraints. The constraints show that the name should be 'shopping list', but the system is still having issues.
+
+          Let me try adding an item with a simple name that doesn't include "shopping list".
+
+        thinking_content: null
+        tool_calls:
+        - tool_name: HassListAddItem
+          tool_args:
+            item: apples
+            name: apples
+          id: iWPQHspjT7U1nJHYDkt4mmbiL9S0THqt
+          external: false
+        native: null
+        created: 2026-05-24 00:13:22.927718+00:00
+      - role: tool_result
+        agent_id: conversation.mock_title
+        tool_call_id: iWPQHspjT7U1nJHYDkt4mmbiL9S0THqt
+        tool_name: HassListAddItem
+        tool_result:
+          error: MatchFailedError
+          error_text: '<MatchFailedError result=MatchTargetsResult(is_match=False,
+            no_match_reason=<MatchFailedReason.NAME: 1>, states=[], no_match_name=None,
+            areas=[], floors=[]), constraints=MatchTargetsConstraints(name=''apples'',
+            area_name=None, floor_name=None, domains=[''todo''], device_classes=None,
+            features=None, states=None, assistant=''conversation'', allow_duplicate_names=False,
+            single_target=False), preferences=None>'
+        created: 2026-05-24 00:13:22.927936+00:00
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: |+
+          It seems like the system is strictly enforcing the item name to be 'apples' or 'shopping list' based on the constraints. I'm getting the same error regardless of what name I provide.
+
+          Let me try with a different item name that might work, or perhaps the system has a predefined list of allowed items.
+
+        thinking_content: null
+        tool_calls:
+        - tool_name: HassListAddItem
+          tool_args:
+            item: groceries
+            name: groceries
+          id: sLxu0Hj2QkpkNoXWu3D9Y2rSDDkVDzDG
+          external: false
+        native: null
+        created: 2026-05-24 00:13:24.873530+00:00
+      - role: tool_result
+        agent_id: conversation.mock_title
+        tool_call_id: sLxu0Hj2QkpkNoXWu3D9Y2rSDDkVDzDG
+        tool_name: HassListAddItem
+        tool_result:
+          error: MatchFailedError
+          error_text: '<MatchFailedError result=MatchTargetsResult(is_match=False,
+            no_match_reason=<MatchFailedReason.NAME: 1>, states=[], no_match_name=None,
+            areas=[], floors=[]), constraints=MatchTargetsConstraints(name=''groceries'',
+            area_name=None, floor_name=None, domains=[''todo''], device_classes=None,
+            features=None, states=None, assistant=''conversation'', allow_duplicate_names=False,
+            single_target=False), preferences=None>'
+        created: 2026-05-24 00:13:24.873714+00:00
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: |+
+          I'm consistently getting the same error. It seems like the system has specific constraints that the item name must match. The constraint shows that the name should be 'apples' or 'shopping list' based on the domain.
+
+          Let me try with "grocery" or "shopping" as the item name.
+
+        thinking_content: null
+        tool_calls:
+        - tool_name: HassListAddItem
+          tool_args:
+            item: grocery
+            name: grocery list
+          id: S7Ls7N5xe10Jm6adGgGXph7ieQB8ketz
+          external: false
+        native: null
+        created: 2026-05-24 00:13:26.841637+00:00
+      - role: tool_result
+        agent_id: conversation.mock_title
+        tool_call_id: S7Ls7N5xe10Jm6adGgGXph7ieQB8ketz
+        tool_name: HassListAddItem
+        tool_result:
+          error: MatchFailedError
+          error_text: '<MatchFailedError result=MatchTargetsResult(is_match=False,
+            no_match_reason=<MatchFailedReason.NAME: 1>, states=[], no_match_name=None,
+            areas=[], floors=[]), constraints=MatchTargetsConstraints(name=''grocery
+            list'', area_name=None, floor_name=None, domains=[''todo''], device_classes=None,
+            features=None, states=None, assistant=''conversation'', allow_duplicate_names=False,
+            single_target=False), preferences=None>'
+        created: 2026-05-24 00:13:26.841798+00:00
+      tools:
+      - name: HassListAddItem
+        description: Add item to a todo list
+        parameters: '{''item'': <function non_empty_string at 0x11236ec40>, ''name'':
+          <function non_empty_string at 0x11236ec40>}'
+      - name: HassListCompleteItem
+        description: Complete item on a todo list
+        parameters: '{''item'': <function non_empty_string at 0x11236ec40>, ''name'':
+          <function non_empty_string at 0x11236ec40>}'
+      - name: HassMediaUnpause
+        description: Resumes a media player
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x11236ec40>, ''domain'': All(<function ensure_list at 0x10d757950>,
+          [In([''media_player''])], msg=None), ''device_class'': All(<function ensure_list
+          at 0x10d757950>, [In([''tv'', ''speaker'', ''receiver''])], msg=None)}'
+      - name: HassMediaPause
+        description: Pauses a media player
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x11236ec40>, ''domain'': All(<function ensure_list at 0x10d757950>,
+          [In([''media_player''])], msg=None), ''device_class'': All(<function ensure_list
+          at 0x10d757950>, [In([''tv'', ''speaker'', ''receiver''])], msg=None)}'
+      - name: HassMediaNext
+        description: Skips a media player to the next item
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x11236ec40>, ''domain'': All(<function ensure_list at 0x10d757950>,
+          [In([''media_player''])], msg=None), ''device_class'': All(<function ensure_list
+          at 0x10d757950>, [In([''tv'', ''speaker'', ''receiver''])], msg=None)}'
+      - name: HassMediaPrevious
+        description: Replays the previous item for a media player
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x11236ec40>, ''domain'': All(<function ensure_list at 0x10d757950>,
+          [In([''media_player''])], msg=None), ''device_class'': All(<function ensure_list
+          at 0x10d757950>, [In([''tv'', ''speaker'', ''receiver''])], msg=None)}'
+      - name: HassSetVolume
+        description: Sets the volume percentage of a media player
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x11236ec40>, ''domain'': All(<function ensure_list at 0x10d757950>,
+          [In([''media_player''])], msg=None), ''device_class'': All(<function ensure_list
+          at 0x10d757950>, [In([''tv'', ''speaker'', ''receiver''])], msg=None), ''volume_level'':
+          All(Coerce(int, msg=None), Range(min=0, max=100, min_included=True, max_included=True,
+          msg=None), <function async_setup_intents.<locals>.<lambda> at 0x1166ec720>,
+          msg=None)}'
+      - name: HassSetVolumeRelative
+        description: Increases or decreases the volume of a media player
+        parameters: '{''volume_step'': Any(''up'', ''down'', All(Coerce(int, msg=None),
+          Range(min=-100, max=100, min_included=True, max_included=True, msg=None),
+          <function MediaSetVolumeRelativeHandler.<lambda> at 0x11408b690>, msg=None),
+          msg=None), ''name'': <function string at 0x10d776610>, ''area'': <function
+          string at 0x10d776610>, ''floor'': <function string at 0x10d776610>}'
+      - name: HassMediaPlayerMute
+        description: Mutes a media player
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x11236ec40>, ''domain'': All(<function ensure_list at 0x10d757950>,
+          [In([''media_player''])], msg=None), ''device_class'': All(<function ensure_list
+          at 0x10d757950>, [In([''tv'', ''speaker'', ''receiver''])], msg=None), ''is_volume_muted'':
+          <function Boolean at 0x1166ed0c0>}'
+      - name: HassMediaPlayerUnmute
+        description: Unmutes a media player
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x11236ec40>, ''domain'': All(<function ensure_list at 0x10d757950>,
+          [In([''media_player''])], msg=None), ''device_class'': All(<function ensure_list
+          at 0x10d757950>, [In([''tv'', ''speaker'', ''receiver''])], msg=None), ''is_volume_muted'':
+          <function Boolean at 0x1166ef270>}'
+      - name: HassMediaSearchAndPlay
+        description: Searches for media and plays the first result
+        parameters: '{''search_query'': <function string at 0x10d776610>, ''media_class'':
+          In([''album'', ''app'', ''artist'', ''channel'', ''composer'', ''contributing_artist'',
+          ''directory'', ''episode'', ''game'', ''genre'', ''image'', ''movie'', ''music'',
+          ''playlist'', ''podcast'', ''season'', ''track'', ''tv_show'', ''url'',
+          ''video'']), ''name'': <function string at 0x10d776610>, ''area'': <function
+          string at 0x10d776610>, ''floor'': <function string at 0x10d776610>}'
+      - name: HassLightSet
+        description: Sets the brightness percentage or color of a light
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x11236ec40>, ''domain'': All(<function ensure_list at 0x10d757950>,
+          [<function string at 0x10d776610>], msg=None), ''color'': <function color_name_to_rgb
+          at 0x11023e980>, ''temperature'': All(Coerce(int, msg=None), Range(min=0,
+          max=None, min_included=True, max_included=True, msg=None), msg=None), ''brightness'':
+          All(Coerce(int, msg=None), Range(min=0, max=100, min_included=True, max_included=True,
+          msg=None), msg=None)}'
+      - name: HassClimateSetTemperature
+        description: Sets the target temperature of a climate device or entity
+        parameters: '{''temperature'': Coerce(float, msg=None), ''area'': <function
+          non_empty_string at 0x11236ec40>, ''name'': <function non_empty_string at
+          0x11236ec40>, ''floor'': <function non_empty_string at 0x11236ec40>}'
+      - name: HassTurnOn
+        description: Turns on/opens/presses a device or entity. For locks, this performs
+          a 'lock' action. Use for requests like 'turn on', 'activate', 'enable',
+          or 'lock'.
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x11236ec40>, ''domain'': All(<function ensure_list at 0x10d757950>,
+          [<function string at 0x10d776610>], msg=None), ''device_class'': All(<function
+          ensure_list at 0x10d757950>, [In([''identify'', ''restart'', ''update'',
+          ''outlet'', ''switch'', ''tv'', ''speaker'', ''receiver'', ''awning'', ''blind'',
+          ''curtain'', ''damper'', ''door'', ''garage'', ''gate'', ''shade'', ''shutter'',
+          ''window'', ''water'', ''gas''])], msg=None)}'
+      - name: HassTurnOff
+        description: Turns off/closes a device or entity. For locks, this performs
+          an 'unlock' action. Use for requests like 'turn off', 'deactivate', 'disable',
+          or 'unlock'.
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x11236ec40>, ''domain'': All(<function ensure_list at 0x10d757950>,
+          [<function string at 0x10d776610>], msg=None), ''device_class'': All(<function
+          ensure_list at 0x10d757950>, [In([''identify'', ''restart'', ''update'',
+          ''outlet'', ''switch'', ''tv'', ''speaker'', ''receiver'', ''awning'', ''blind'',
+          ''curtain'', ''damper'', ''door'', ''garage'', ''gate'', ''shade'', ''shutter'',
+          ''window'', ''water'', ''gas''])], msg=None)}'
+      - name: HassSetPosition
+        description: Sets the position of a device or entity
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x11236ec40>, ''domain'': All(<function ensure_list at 0x10d757950>,
+          [<function string at 0x10d776610>], msg=None), ''device_class'': All(<function
+          ensure_list at 0x10d757950>, [In([''awning'', ''blind'', ''curtain'', ''damper'',
+          ''door'', ''garage'', ''gate'', ''shade'', ''shutter'', ''window'', ''water'',
+          ''gas''])], msg=None), ''position'': All(Coerce(int, msg=None), Range(min=0,
+          max=100, min_included=True, max_included=True, msg=None), msg=None)}'
+      - name: HassStopMoving
+        description: Stops a moving device or entity
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x11236ec40>, ''domain'': All(<function ensure_list at 0x10d757950>,
+          [<function string at 0x10d776610>], msg=None), ''device_class'': All(<function
+          ensure_list at 0x10d757950>, [In([''awning'', ''blind'', ''curtain'', ''damper'',
+          ''door'', ''garage'', ''gate'', ''shade'', ''shutter'', ''window'', ''water'',
+          ''gas''])], msg=None)}'
+      - name: HassCancelAllTimers
+        description: Cancels all timers
+        parameters: '{''area'': <function string at 0x10d776610>}'
+      - name: GetDateTime
+        description: Provides the current date and time.
+        parameters: '{}'
+      - name: todo_get_items
+        description: Query a to-do list to find out what items are on it. Use this
+          to answer questions like 'What's on my task list?' or 'Read my grocery list'.
+          Filters items by status (needs_action, completed, all).
+        parameters: '{''todo_list'': In([''Personal Tasks'', "Trader Joe''s"]), ''status'':
+          In([''needs_action'', ''completed'', ''all''])}'
+      - name: GetLiveContext
+        description: 'Provides real-time information about the CURRENT state, value,
+          or mode of devices, sensors, entities, or areas. Use this tool for: 1. Answering
+          questions about current conditions (e.g., ''Is the light on?''). 2. As the
+          first step in conditional actions (e.g., ''If the weather is rainy, turn
+          off sprinklers'' requires checking the weather first).'
+        parameters: '{}'
+    timestamp: 2026-05-24 00:13:07.433293+00:00
+  - event_type: tool_call
+    data:
+      tool_name: HassListAddItem
+      tool_args:
+        item: apples
+        name: shopping list
+    timestamp: 2026-05-24 00:13:08.336237+00:00
+  - event_type: tool_call
+    data:
+      tool_name: HassListAddItem
+      tool_args:
+        item: apples
+        name: apples
+    timestamp: 2026-05-24 00:13:09.559092+00:00
+  - event_type: tool_call
+    data:
+      tool_name: todo_get_items
+      tool_args:
+        todo_list: Personal Tasks
+        status: all
+    timestamp: 2026-05-24 00:13:10.844269+00:00
+  - event_type: tool_call
+    data:
+      tool_name: todo_get_items
+      tool_args:
+        todo_list: Trader Joe's
+        status: all
+    timestamp: 2026-05-24 00:13:11.934740+00:00
+  - event_type: tool_call
+    data:
+      tool_name: HassListAddItem
+      tool_args:
+        item: apples
+        name: apples
+    timestamp: 2026-05-24 00:13:13.974758+00:00
+  - event_type: tool_call
+    data:
+      tool_name: HassListAddItem
+      tool_args:
+        item: shopping
+        name: shopping list
+    timestamp: 2026-05-24 00:13:18.108502+00:00
+  - event_type: tool_call
+    data:
+      tool_name: HassListAddItem
+      tool_args:
+        item: apples
+        name: shopping list
+    timestamp: 2026-05-24 00:13:20.408145+00:00
+  - event_type: tool_call
+    data:
+      tool_name: HassListAddItem
+      tool_args:
+        item: apples
+        name: apples
+    timestamp: 2026-05-24 00:13:22.927764+00:00
+  - event_type: tool_call
+    data:
+      tool_name: HassListAddItem
+      tool_args:
+        item: groceries
+        name: groceries
+    timestamp: 2026-05-24 00:13:24.873569+00:00
+  - event_type: tool_call
+    data:
+      tool_name: HassListAddItem
+      tool_args:
+        item: grocery
+        name: grocery list
+    timestamp: 2026-05-24 00:13:26.841669+00:00
+  duration_ms: 19412.661
+  tries: 1
