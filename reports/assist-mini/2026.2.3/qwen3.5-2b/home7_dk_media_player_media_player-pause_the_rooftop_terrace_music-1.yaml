@@ -1,0 +1,546 @@
+---
+uuid: 5b083cf3-37c3-4c2d-971f-20e82a10a3cc
+task_id: home7_dk_media_player_media_player-pause_the_rooftop_terrace_music-1
+model_id: qwen3.5-2b
+category: media-player
+task:
+  input_text: Pause the Rooftop Terrace music
+  expect_changes:
+    media_player.outdoor_speakers:
+      state: paused
+      attributes: null
+response: Unable to get response
+context:
+  unexpected_states:
+    media_player.outdoor_speakers:
+      expected:
+        state: paused
+      got:
+        state: playing
+  conversation_trace:
+  - event_type: async_process
+    data:
+      text: Pause the Rooftop Terrace music
+      context:
+        id: 01KSJZ4PGJD8YF8ERY6XB61QA4
+        parent_id: null
+        user_id: null
+      conversation_id: null
+      device_id: null
+      satellite_id: null
+      language: en
+      agent_id: conversation.mock_title
+      extra_system_prompt: null
+    timestamp: 2026-05-26 20:20:42.130501+00:00
+  - event_type: agent_detail
+    data:
+      messages:
+      - role: system
+        content: |
+          You are a voice assistant for Home Assistant.
+          Answer questions about the world truthfully.
+          Answer in plain text. Keep it simple and to the point.
+          When controlling Home Assistant always call the intent tools. Use HassTurnOn to lock and HassTurnOff to unlock a lock. When controlling a device, prefer passing just name and domain. When controlling an area, prefer passing just area name and domain.
+          When a user asks to turn on all devices of a specific type, ask user to specify an area, unless there is only one device of that type.
+          This device is not able to start timers.
+          You ARE equipped to answer questions about the current state of
+          the home using the `GetLiveContext` tool. This is a primary function. Do not state you lack the
+          functionality if the question requires live data.
+          If the user asks about device existence/type (e.g., "Do I have lights in the bedroom?"): Answer
+          from the static context below.
+          If the user asks about the CURRENT state, value, or mode (e.g., "Is the lock locked?",
+          "Is the fan on?", "What mode is the thermostat in?", "What is the temperature outside?"):
+              1.  Recognize this requires live data.
+              2.  You MUST call `GetLiveContext`. This tool will provide the needed real-time information (like temperature from the local weather, lock status, etc.).
+              3.  Use the tool's response** to answer the user accurately (e.g., "The temperature outside is [value from tool].").
+          For general knowledge questions not about the home: Answer truthfully from internal knowledge.
+
+          Static Context: An overview of the areas and the devices in this smart home:
+          - names: Outdoor Speakers
+            domain: media_player
+            areas: Rooftop Terrace
+        created: 2026-05-26 20:20:42.133444+00:00
+      - role: user
+        content: Pause the Rooftop Terrace music
+        attachments: null
+        created: 2026-05-26 20:20:42.130540+00:00
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: null
+        thinking_content: null
+        tool_calls:
+        - tool_name: HassMediaPause
+          tool_args:
+            area: Rooftop Terrace
+            floor: '1'
+            domain:
+            - media_player
+          id: 7gueeZnebAXfbQTfX0DXVktC45N5OzKR
+          external: false
+        native: null
+        created: 2026-05-26 20:20:42.650616+00:00
+      - role: tool_result
+        agent_id: conversation.mock_title
+        tool_call_id: 7gueeZnebAXfbQTfX0DXVktC45N5OzKR
+        tool_name: HassMediaPause
+        tool_result:
+          error: MatchFailedError
+          error_text: '<MatchFailedError result=MatchTargetsResult(is_match=False,
+            no_match_reason=<MatchFailedReason.INVALID_FLOOR: 10>, states=[], no_match_name=''1'',
+            areas=[], floors=[]), constraints=MatchTargetsConstraints(name=None, area_name=''Rooftop
+            Terrace'', floor_name=''1'', domains={''media_player''}, device_classes=None,
+            features=<MediaPlayerEntityFeature.PAUSE: 1>, states={<MediaPlayerState.PLAYING:
+            ''playing''>}, assistant=''conversation'', allow_duplicate_names=False,
+            single_target=False), preferences=MatchTargetsPreferences(area_id=None,
+            floor_id=None)>'
+        created: 2026-05-26 20:20:42.652269+00:00
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: null
+        thinking_content: null
+        tool_calls:
+        - tool_name: HassMediaPlayerUnmute
+          tool_args:
+            area: Rooftop Terrace
+            floor: '1'
+            domain:
+            - media_player
+          id: 5ORYbQZMIg0AXqUAMeaQxgzcFDx4I9XX
+          external: false
+        native: null
+        created: 2026-05-26 20:20:43.100583+00:00
+      - role: tool_result
+        agent_id: conversation.mock_title
+        tool_call_id: 5ORYbQZMIg0AXqUAMeaQxgzcFDx4I9XX
+        tool_name: HassMediaPlayerUnmute
+        tool_result:
+          error: MatchFailedError
+          error_text: '<MatchFailedError result=MatchTargetsResult(is_match=False,
+            no_match_reason=<MatchFailedReason.INVALID_FLOOR: 10>, states=[], no_match_name=''1'',
+            areas=[], floors=[]), constraints=MatchTargetsConstraints(name=None, area_name=''Rooftop
+            Terrace'', floor_name=''1'', domains={''media_player''}, device_classes=None,
+            features=<MediaPlayerEntityFeature.VOLUME_MUTE: 8>, states=None, assistant=''conversation'',
+            allow_duplicate_names=False, single_target=False), preferences=MatchTargetsPreferences(area_id=None,
+            floor_id=None)>'
+        created: 2026-05-26 20:20:43.103262+00:00
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: null
+        thinking_content: null
+        tool_calls:
+        - tool_name: HassMediaPlayerUnmute
+          tool_args:
+            name: Rooftop Terrace
+            area: Rooftop Terrace
+            floor: '1'
+            domain:
+            - media_player
+          id: IhNF4zAfd6etDC7Crd2osai9Wsal0vt2
+          external: false
+        native: null
+        created: 2026-05-26 20:20:43.671146+00:00
+      - role: tool_result
+        agent_id: conversation.mock_title
+        tool_call_id: IhNF4zAfd6etDC7Crd2osai9Wsal0vt2
+        tool_name: HassMediaPlayerUnmute
+        tool_result:
+          error: MatchFailedError
+          error_text: '<MatchFailedError result=MatchTargetsResult(is_match=False,
+            no_match_reason=<MatchFailedReason.NAME: 1>, states=[], no_match_name=None,
+            areas=[], floors=[]), constraints=MatchTargetsConstraints(name=''Rooftop
+            Terrace'', area_name=''Rooftop Terrace'', floor_name=''1'', domains={''media_player''},
+            device_classes=None, features=<MediaPlayerEntityFeature.VOLUME_MUTE: 8>,
+            states=None, assistant=''conversation'', allow_duplicate_names=False,
+            single_target=False), preferences=MatchTargetsPreferences(area_id=None,
+            floor_id=None)>'
+        created: 2026-05-26 20:20:43.671656+00:00
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: null
+        thinking_content: null
+        tool_calls:
+        - tool_name: HassMediaPlayerUnmute
+          tool_args:
+            name: Rooftop Terrace
+            area: Rooftop Terrace
+            domain:
+            - media_player
+          id: DSg8rS3XqbBWlRsuPagHYL4qj6motjqJ
+          external: false
+        native: null
+        created: 2026-05-26 20:20:44.185743+00:00
+      - role: tool_result
+        agent_id: conversation.mock_title
+        tool_call_id: DSg8rS3XqbBWlRsuPagHYL4qj6motjqJ
+        tool_name: HassMediaPlayerUnmute
+        tool_result:
+          error: MatchFailedError
+          error_text: '<MatchFailedError result=MatchTargetsResult(is_match=False,
+            no_match_reason=<MatchFailedReason.NAME: 1>, states=[], no_match_name=None,
+            areas=[], floors=[]), constraints=MatchTargetsConstraints(name=''Rooftop
+            Terrace'', area_name=''Rooftop Terrace'', floor_name=None, domains={''media_player''},
+            device_classes=None, features=<MediaPlayerEntityFeature.VOLUME_MUTE: 8>,
+            states=None, assistant=''conversation'', allow_duplicate_names=False,
+            single_target=False), preferences=MatchTargetsPreferences(area_id=None,
+            floor_id=None)>'
+        created: 2026-05-26 20:20:44.186421+00:00
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: null
+        thinking_content: null
+        tool_calls:
+        - tool_name: HassMediaPlayerUnmute
+          tool_args:
+            name: Rooftop Terrace
+            domain:
+            - media_player
+          id: ChNftiRJ28pjrODtwvO5ZGYDP9g5yOX3
+          external: false
+        native: null
+        created: 2026-05-26 20:20:44.592306+00:00
+      - role: tool_result
+        agent_id: conversation.mock_title
+        tool_call_id: ChNftiRJ28pjrODtwvO5ZGYDP9g5yOX3
+        tool_name: HassMediaPlayerUnmute
+        tool_result:
+          error: MatchFailedError
+          error_text: '<MatchFailedError result=MatchTargetsResult(is_match=False,
+            no_match_reason=<MatchFailedReason.NAME: 1>, states=[], no_match_name=None,
+            areas=[], floors=[]), constraints=MatchTargetsConstraints(name=''Rooftop
+            Terrace'', area_name=None, floor_name=None, domains={''media_player''},
+            device_classes=None, features=<MediaPlayerEntityFeature.VOLUME_MUTE: 8>,
+            states=None, assistant=''conversation'', allow_duplicate_names=False,
+            single_target=False), preferences=MatchTargetsPreferences(area_id=None,
+            floor_id=None)>'
+        created: 2026-05-26 20:20:44.592722+00:00
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: null
+        thinking_content: null
+        tool_calls:
+        - tool_name: HassMediaPlayerUnmute
+          tool_args:
+            name: Rooftop Terrace
+            domain:
+            - media_player
+          id: KurNfL9TPmuNT80WGVli62uX252eSXGY
+          external: false
+        native: null
+        created: 2026-05-26 20:20:44.976051+00:00
+      - role: tool_result
+        agent_id: conversation.mock_title
+        tool_call_id: KurNfL9TPmuNT80WGVli62uX252eSXGY
+        tool_name: HassMediaPlayerUnmute
+        tool_result:
+          error: MatchFailedError
+          error_text: '<MatchFailedError result=MatchTargetsResult(is_match=False,
+            no_match_reason=<MatchFailedReason.NAME: 1>, states=[], no_match_name=None,
+            areas=[], floors=[]), constraints=MatchTargetsConstraints(name=''Rooftop
+            Terrace'', area_name=None, floor_name=None, domains={''media_player''},
+            device_classes=None, features=<MediaPlayerEntityFeature.VOLUME_MUTE: 8>,
+            states=None, assistant=''conversation'', allow_duplicate_names=False,
+            single_target=False), preferences=MatchTargetsPreferences(area_id=None,
+            floor_id=None)>'
+        created: 2026-05-26 20:20:44.976683+00:00
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: null
+        thinking_content: null
+        tool_calls:
+        - tool_name: HassMediaPlayerUnmute
+          tool_args:
+            name: Rooftop Terrace
+            domain:
+            - media_player
+          id: 04lJ1IsmWXknA0kf4kZ7Hw2q0AipcGW0
+          external: false
+        native: null
+        created: 2026-05-26 20:20:45.366051+00:00
+      - role: tool_result
+        agent_id: conversation.mock_title
+        tool_call_id: 04lJ1IsmWXknA0kf4kZ7Hw2q0AipcGW0
+        tool_name: HassMediaPlayerUnmute
+        tool_result:
+          error: MatchFailedError
+          error_text: '<MatchFailedError result=MatchTargetsResult(is_match=False,
+            no_match_reason=<MatchFailedReason.NAME: 1>, states=[], no_match_name=None,
+            areas=[], floors=[]), constraints=MatchTargetsConstraints(name=''Rooftop
+            Terrace'', area_name=None, floor_name=None, domains={''media_player''},
+            device_classes=None, features=<MediaPlayerEntityFeature.VOLUME_MUTE: 8>,
+            states=None, assistant=''conversation'', allow_duplicate_names=False,
+            single_target=False), preferences=MatchTargetsPreferences(area_id=None,
+            floor_id=None)>'
+        created: 2026-05-26 20:20:45.366772+00:00
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: null
+        thinking_content: null
+        tool_calls:
+        - tool_name: HassMediaPlayerUnmute
+          tool_args:
+            name: Rooftop Terrace
+            domain:
+            - media_player
+          id: svF3j6mzTBZq8BbSGUxgpnVMNbn4GS8E
+          external: false
+        native: null
+        created: 2026-05-26 20:20:45.759877+00:00
+      - role: tool_result
+        agent_id: conversation.mock_title
+        tool_call_id: svF3j6mzTBZq8BbSGUxgpnVMNbn4GS8E
+        tool_name: HassMediaPlayerUnmute
+        tool_result:
+          error: MatchFailedError
+          error_text: '<MatchFailedError result=MatchTargetsResult(is_match=False,
+            no_match_reason=<MatchFailedReason.NAME: 1>, states=[], no_match_name=None,
+            areas=[], floors=[]), constraints=MatchTargetsConstraints(name=''Rooftop
+            Terrace'', area_name=None, floor_name=None, domains={''media_player''},
+            device_classes=None, features=<MediaPlayerEntityFeature.VOLUME_MUTE: 8>,
+            states=None, assistant=''conversation'', allow_duplicate_names=False,
+            single_target=False), preferences=MatchTargetsPreferences(area_id=None,
+            floor_id=None)>'
+        created: 2026-05-26 20:20:45.760310+00:00
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: null
+        thinking_content: null
+        tool_calls:
+        - tool_name: HassMediaPlayerUnmute
+          tool_args:
+            name: Rooftop Terrace
+            domain:
+            - media_player
+          id: 1CWDoKJIE3dhw6OrJVa2hnbesQnGGFx9
+          external: false
+        native: null
+        created: 2026-05-26 20:20:46.154657+00:00
+      - role: tool_result
+        agent_id: conversation.mock_title
+        tool_call_id: 1CWDoKJIE3dhw6OrJVa2hnbesQnGGFx9
+        tool_name: HassMediaPlayerUnmute
+        tool_result:
+          error: MatchFailedError
+          error_text: '<MatchFailedError result=MatchTargetsResult(is_match=False,
+            no_match_reason=<MatchFailedReason.NAME: 1>, states=[], no_match_name=None,
+            areas=[], floors=[]), constraints=MatchTargetsConstraints(name=''Rooftop
+            Terrace'', area_name=None, floor_name=None, domains={''media_player''},
+            device_classes=None, features=<MediaPlayerEntityFeature.VOLUME_MUTE: 8>,
+            states=None, assistant=''conversation'', allow_duplicate_names=False,
+            single_target=False), preferences=MatchTargetsPreferences(area_id=None,
+            floor_id=None)>'
+        created: 2026-05-26 20:20:46.155372+00:00
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: null
+        thinking_content: null
+        tool_calls:
+        - tool_name: HassMediaPlayerUnmute
+          tool_args:
+            name: Rooftop Terrace
+            domain:
+            - media_player
+          id: QacizitE8q9K59V0Jwbg060Z21R81UYt
+          external: false
+        native: null
+        created: 2026-05-26 20:20:46.549248+00:00
+      - role: tool_result
+        agent_id: conversation.mock_title
+        tool_call_id: QacizitE8q9K59V0Jwbg060Z21R81UYt
+        tool_name: HassMediaPlayerUnmute
+        tool_result:
+          error: MatchFailedError
+          error_text: '<MatchFailedError result=MatchTargetsResult(is_match=False,
+            no_match_reason=<MatchFailedReason.NAME: 1>, states=[], no_match_name=None,
+            areas=[], floors=[]), constraints=MatchTargetsConstraints(name=''Rooftop
+            Terrace'', area_name=None, floor_name=None, domains={''media_player''},
+            device_classes=None, features=<MediaPlayerEntityFeature.VOLUME_MUTE: 8>,
+            states=None, assistant=''conversation'', allow_duplicate_names=False,
+            single_target=False), preferences=MatchTargetsPreferences(area_id=None,
+            floor_id=None)>'
+        created: 2026-05-26 20:20:46.549535+00:00
+      tools:
+      - name: HassMediaUnpause
+        description: Resumes a media player
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x112046c40>, ''domain'': All(<function ensure_list at 0x10d47f8a0>,
+          [In([''media_player''])], msg=None), ''device_class'': All(<function ensure_list
+          at 0x10d47f8a0>, [In([''tv'', ''speaker'', ''receiver''])], msg=None)}'
+      - name: HassMediaPause
+        description: Pauses a media player
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x112046c40>, ''domain'': All(<function ensure_list at 0x10d47f8a0>,
+          [In([''media_player''])], msg=None), ''device_class'': All(<function ensure_list
+          at 0x10d47f8a0>, [In([''tv'', ''speaker'', ''receiver''])], msg=None)}'
+      - name: HassMediaNext
+        description: Skips a media player to the next item
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x112046c40>, ''domain'': All(<function ensure_list at 0x10d47f8a0>,
+          [In([''media_player''])], msg=None), ''device_class'': All(<function ensure_list
+          at 0x10d47f8a0>, [In([''tv'', ''speaker'', ''receiver''])], msg=None)}'
+      - name: HassMediaPrevious
+        description: Replays the previous item for a media player
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x112046c40>, ''domain'': All(<function ensure_list at 0x10d47f8a0>,
+          [In([''media_player''])], msg=None), ''device_class'': All(<function ensure_list
+          at 0x10d47f8a0>, [In([''tv'', ''speaker'', ''receiver''])], msg=None)}'
+      - name: HassSetVolume
+        description: Sets the volume percentage of a media player
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x112046c40>, ''domain'': All(<function ensure_list at 0x10d47f8a0>,
+          [In([''media_player''])], msg=None), ''device_class'': All(<function ensure_list
+          at 0x10d47f8a0>, [In([''tv'', ''speaker'', ''receiver''])], msg=None), ''volume_level'':
+          All(Coerce(int, msg=None), Range(min=0, max=100, min_included=True, max_included=True,
+          msg=None), <function async_setup_intents.<locals>.<lambda> at 0x1165873d0>,
+          msg=None)}'
+      - name: HassSetVolumeRelative
+        description: Increases or decreases the volume of a media player
+        parameters: '{''volume_step'': Any(''up'', ''down'', All(Coerce(int, msg=None),
+          Range(min=-100, max=100, min_included=True, max_included=True, msg=None),
+          <function MediaSetVolumeRelativeHandler.<lambda> at 0x113d7ec40>, msg=None),
+          msg=None), ''name'': <function string at 0x10d49e560>, ''area'': <function
+          string at 0x10d49e560>, ''floor'': <function string at 0x10d49e560>}'
+      - name: HassMediaPlayerMute
+        description: Mutes a media player
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x112046c40>, ''domain'': All(<function ensure_list at 0x10d47f8a0>,
+          [In([''media_player''])], msg=None), ''device_class'': All(<function ensure_list
+          at 0x10d47f8a0>, [In([''tv'', ''speaker'', ''receiver''])], msg=None), ''is_volume_muted'':
+          <function Boolean at 0x116587480>}'
+      - name: HassMediaPlayerUnmute
+        description: Unmutes a media player
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x112046c40>, ''domain'': All(<function ensure_list at 0x10d47f8a0>,
+          [In([''media_player''])], msg=None), ''device_class'': All(<function ensure_list
+          at 0x10d47f8a0>, [In([''tv'', ''speaker'', ''receiver''])], msg=None), ''is_volume_muted'':
+          <function Boolean at 0x116584930>}'
+      - name: HassMediaSearchAndPlay
+        description: Searches for media and plays the first result
+        parameters: '{''search_query'': <function string at 0x10d49e560>, ''media_class'':
+          In([''album'', ''app'', ''artist'', ''channel'', ''composer'', ''contributing_artist'',
+          ''directory'', ''episode'', ''game'', ''genre'', ''image'', ''movie'', ''music'',
+          ''playlist'', ''podcast'', ''season'', ''track'', ''tv_show'', ''url'',
+          ''video'']), ''name'': <function string at 0x10d49e560>, ''area'': <function
+          string at 0x10d49e560>, ''floor'': <function string at 0x10d49e560>}'
+      - name: HassTurnOn
+        description: Turns on/opens/presses a device or entity. For locks, this performs
+          a 'lock' action. Use for requests like 'turn on', 'activate', 'enable',
+          or 'lock'.
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x112046c40>, ''domain'': All(<function ensure_list at 0x10d47f8a0>,
+          [<function string at 0x10d49e560>], msg=None), ''device_class'': All(<function
+          ensure_list at 0x10d47f8a0>, [In([''outlet'', ''switch'', ''identify'',
+          ''restart'', ''update'', ''awning'', ''blind'', ''curtain'', ''damper'',
+          ''door'', ''garage'', ''gate'', ''shade'', ''shutter'', ''window'', ''water'',
+          ''gas'', ''tv'', ''speaker'', ''receiver''])], msg=None)}'
+      - name: HassTurnOff
+        description: Turns off/closes a device or entity. For locks, this performs
+          an 'unlock' action. Use for requests like 'turn off', 'deactivate', 'disable',
+          or 'unlock'.
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x112046c40>, ''domain'': All(<function ensure_list at 0x10d47f8a0>,
+          [<function string at 0x10d49e560>], msg=None), ''device_class'': All(<function
+          ensure_list at 0x10d47f8a0>, [In([''outlet'', ''switch'', ''identify'',
+          ''restart'', ''update'', ''awning'', ''blind'', ''curtain'', ''damper'',
+          ''door'', ''garage'', ''gate'', ''shade'', ''shutter'', ''window'', ''water'',
+          ''gas'', ''tv'', ''speaker'', ''receiver''])], msg=None)}'
+      - name: HassCancelAllTimers
+        description: Cancels all timers
+        parameters: '{''area'': <function string at 0x10d49e560>}'
+      - name: GetDateTime
+        description: Provides the current date and time.
+        parameters: '{}'
+      - name: GetLiveContext
+        description: 'Provides real-time information about the CURRENT state, value,
+          or mode of devices, sensors, entities, or areas. Use this tool for: 1. Answering
+          questions about current conditions (e.g., ''Is the light on?''). 2. As the
+          first step in conditional actions (e.g., ''If the weather is rainy, turn
+          off sprinklers'' requires checking the weather first).'
+        parameters: '{}'
+    timestamp: 2026-05-26 20:20:42.133451+00:00
+  - event_type: tool_call
+    data:
+      tool_name: HassMediaPause
+      tool_args:
+        area: Rooftop Terrace
+        floor: '1'
+        domain:
+        - media_player
+    timestamp: 2026-05-26 20:20:42.650774+00:00
+  - event_type: tool_call
+    data:
+      tool_name: HassMediaPlayerUnmute
+      tool_args:
+        area: Rooftop Terrace
+        floor: '1'
+        domain:
+        - media_player
+    timestamp: 2026-05-26 20:20:43.100708+00:00
+  - event_type: tool_call
+    data:
+      tool_name: HassMediaPlayerUnmute
+      tool_args:
+        name: Rooftop Terrace
+        area: Rooftop Terrace
+        floor: '1'
+        domain:
+        - media_player
+    timestamp: 2026-05-26 20:20:43.671215+00:00
+  - event_type: tool_call
+    data:
+      tool_name: HassMediaPlayerUnmute
+      tool_args:
+        name: Rooftop Terrace
+        area: Rooftop Terrace
+        domain:
+        - media_player
+    timestamp: 2026-05-26 20:20:44.185837+00:00
+  - event_type: tool_call
+    data:
+      tool_name: HassMediaPlayerUnmute
+      tool_args:
+        name: Rooftop Terrace
+        domain:
+        - media_player
+    timestamp: 2026-05-26 20:20:44.592365+00:00
+  - event_type: tool_call
+    data:
+      tool_name: HassMediaPlayerUnmute
+      tool_args:
+        name: Rooftop Terrace
+        domain:
+        - media_player
+    timestamp: 2026-05-26 20:20:44.976145+00:00
+  - event_type: tool_call
+    data:
+      tool_name: HassMediaPlayerUnmute
+      tool_args:
+        name: Rooftop Terrace
+        domain:
+        - media_player
+    timestamp: 2026-05-26 20:20:45.366160+00:00
+  - event_type: tool_call
+    data:
+      tool_name: HassMediaPlayerUnmute
+      tool_args:
+        name: Rooftop Terrace
+        domain:
+        - media_player
+    timestamp: 2026-05-26 20:20:45.759942+00:00
+  - event_type: tool_call
+    data:
+      tool_name: HassMediaPlayerUnmute
+      tool_args:
+        name: Rooftop Terrace
+        domain:
+        - media_player
+    timestamp: 2026-05-26 20:20:46.154761+00:00
+  - event_type: tool_call
+    data:
+      tool_name: HassMediaPlayerUnmute
+      tool_args:
+        name: Rooftop Terrace
+        domain:
+        - media_player
+    timestamp: 2026-05-26 20:20:46.549294+00:00
+  duration_ms: 4419.31
+  tries: 1

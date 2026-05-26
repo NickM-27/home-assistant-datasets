@@ -1,0 +1,334 @@
+---
+uuid: 63e19812-8675-4031-aa3e-7e3d7a5c6d45
+task_id: dom1_pl_lights_lights-turn_on_the_backyard_light-1
+model_id: qwen3.5-2b
+category: light
+task:
+  input_text: Turn on the Backyard light
+  expect_changes:
+    light.garden_light:
+      state: 'on'
+      attributes:
+        brightness: 0
+        color_mode: brightness
+response: The garden light in the Backyard area has been turned on successfully.
+context:
+  unexpected_states: {}
+  conversation_trace:
+  - event_type: async_process
+    data:
+      text: Turn on the Backyard light
+      context:
+        id: 01KSJYZZ98PQWV0J2PQQY0W284
+        parent_id: null
+        user_id: null
+      conversation_id: null
+      device_id: null
+      satellite_id: null
+      language: en
+      agent_id: conversation.mock_title
+      extra_system_prompt: null
+    timestamp: 2026-05-26 20:18:07.272870+00:00
+  - event_type: agent_detail
+    data:
+      messages:
+      - role: system
+        content: |
+          You are a voice assistant for Home Assistant.
+          Answer questions about the world truthfully.
+          Answer in plain text. Keep it simple and to the point.
+          When controlling Home Assistant always call the intent tools. Use HassTurnOn to lock and HassTurnOff to unlock a lock. When controlling a device, prefer passing just name and domain. When controlling an area, prefer passing just area name and domain.
+          When a user asks to turn on all devices of a specific type, ask user to specify an area, unless there is only one device of that type.
+          This device is not able to start timers.
+          You ARE equipped to answer questions about the current state of
+          the home using the `GetLiveContext` tool. This is a primary function. Do not state you lack the
+          functionality if the question requires live data.
+          If the user asks about device existence/type (e.g., "Do I have lights in the bedroom?"): Answer
+          from the static context below.
+          If the user asks about the CURRENT state, value, or mode (e.g., "Is the lock locked?",
+          "Is the fan on?", "What mode is the thermostat in?", "What is the temperature outside?"):
+              1.  Recognize this requires live data.
+              2.  You MUST call `GetLiveContext`. This tool will provide the needed real-time information (like temperature from the local weather, lock status, etc.).
+              3.  Use the tool's response** to answer the user accurately (e.g., "The temperature outside is [value from tool].").
+          For general knowledge questions not about the home: Answer truthfully from internal knowledge.
+
+          Static Context: An overview of the areas and the devices in this smart home:
+          - names: Bedroom 1 Light
+            domain: light
+            areas: Bedroom 1
+          - names: Bedroom 2 Light
+            domain: light
+            areas: Bedroom 2
+          - names: Bedroom 3 Light
+            domain: light
+            areas: Bedroom 3
+          - names: Bedroom 4 Light
+            domain: light
+            areas: Bedroom 4
+          - names: Dining Room Light
+            domain: light
+            areas: Dining Room
+          - names: Garden Light
+            domain: light
+            areas: Backyard
+          - names: Kitchen Light
+            domain: light
+            areas: Kitchen
+          - names: Living Room Light
+            domain: light
+            areas: Living Room
+        created: 2026-05-26 20:18:07.273547+00:00
+      - role: user
+        content: Turn on the Backyard light
+        attachments: null
+        created: 2026-05-26 20:18:07.272907+00:00
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: |+
+          I will turn on the Backyard light for you.
+
+        thinking_content: null
+        tool_calls:
+        - tool_name: HassTurnOn
+          tool_args:
+            name: Backyard Light
+            domain:
+            - light
+          id: JBp5AkmlWP5cbsUSnZDQ2k49vfNfeflQ
+          external: false
+        native: null
+        created: 2026-05-26 20:18:07.715206+00:00
+      - role: tool_result
+        agent_id: conversation.mock_title
+        tool_call_id: JBp5AkmlWP5cbsUSnZDQ2k49vfNfeflQ
+        tool_name: HassTurnOn
+        tool_result:
+          error: MatchFailedError
+          error_text: '<MatchFailedError result=MatchTargetsResult(is_match=False,
+            no_match_reason=<MatchFailedReason.NAME: 1>, states=[], no_match_name=None,
+            areas=[], floors=[]), constraints=MatchTargetsConstraints(name=''Backyard
+            Light'', area_name=None, floor_name=None, domains={''light''}, device_classes=None,
+            features=None, states=None, assistant=''conversation'', allow_duplicate_names=False,
+            single_target=False), preferences=MatchTargetsPreferences(area_id=None,
+            floor_id=None)>'
+        created: 2026-05-26 20:18:07.716127+00:00
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: |+
+          I need to provide the area name for the light. Let me try again with the area specified.
+
+        thinking_content: null
+        tool_calls:
+        - tool_name: HassTurnOn
+          tool_args:
+            name: Backyard Light
+            area: Backyard
+            domain:
+            - light
+          id: zinsCPyrMt8ubSGck8IslfWfuHAWKX9W
+          external: false
+        native: null
+        created: 2026-05-26 20:18:08.245409+00:00
+      - role: tool_result
+        agent_id: conversation.mock_title
+        tool_call_id: zinsCPyrMt8ubSGck8IslfWfuHAWKX9W
+        tool_name: HassTurnOn
+        tool_result:
+          error: MatchFailedError
+          error_text: '<MatchFailedError result=MatchTargetsResult(is_match=False,
+            no_match_reason=<MatchFailedReason.NAME: 1>, states=[], no_match_name=None,
+            areas=[], floors=[]), constraints=MatchTargetsConstraints(name=''Backyard
+            Light'', area_name=''Backyard'', floor_name=None, domains={''light''},
+            device_classes=None, features=None, states=None, assistant=''conversation'',
+            allow_duplicate_names=False, single_target=False), preferences=MatchTargetsPreferences(area_id=None,
+            floor_id=None)>'
+        created: 2026-05-26 20:18:08.246191+00:00
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: |+
+          I'm still having trouble with the name and area. Let me check the live context to see if there's a device named "Backyard Light" in the Backyard area.
+
+        thinking_content: null
+        tool_calls:
+        - tool_name: GetLiveContext
+          tool_args: {}
+          id: wzgqXVjKqFythsBzjv9SbhaIXbGcIJ2j
+          external: false
+        native: null
+        created: 2026-05-26 20:18:08.740576+00:00
+      - role: tool_result
+        agent_id: conversation.mock_title
+        tool_call_id: wzgqXVjKqFythsBzjv9SbhaIXbGcIJ2j
+        tool_name: GetLiveContext
+        tool_result:
+          success: true
+          result: |
+            Live Context: An overview of the areas and the devices in this smart home:
+            - names: Bedroom 1 Light
+              domain: light
+              state: 'off'
+              areas: Bedroom 1
+            - names: Bedroom 2 Light
+              domain: light
+              state: 'off'
+              areas: Bedroom 2
+            - names: Bedroom 3 Light
+              domain: light
+              state: 'off'
+              areas: Bedroom 3
+            - names: Bedroom 4 Light
+              domain: light
+              state: 'off'
+              areas: Bedroom 4
+            - names: Dining Room Light
+              domain: light
+              state: 'on'
+              areas: Dining Room
+              attributes:
+                brightness: '100'
+            - names: Garden Light
+              domain: light
+              state: 'off'
+              areas: Backyard
+              attributes:
+                brightness:
+            - names: Kitchen Light
+              domain: light
+              state: 'on'
+              areas: Kitchen
+              attributes:
+                brightness: '100'
+            - names: Living Room Light
+              domain: light
+              state: 'on'
+              areas: Living Room
+              attributes:
+                brightness: '100'
+        created: 2026-05-26 20:18:08.741839+00:00
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: |+
+          I can see there's a device named "Garden Light" in the Backyard area with the domain "light". Let me try turning it on using the Garden Light name instead.
+
+        thinking_content: null
+        tool_calls:
+        - tool_name: HassTurnOn
+          tool_args:
+            name: Garden Light
+            area: Backyard
+            domain:
+            - light
+          id: dclZeKcxwcxK7Mipp5JTXSft5yleDoUt
+          external: false
+        native: null
+        created: 2026-05-26 20:18:09.457667+00:00
+      - role: tool_result
+        agent_id: conversation.mock_title
+        tool_call_id: dclZeKcxwcxK7Mipp5JTXSft5yleDoUt
+        tool_name: HassTurnOn
+        tool_result:
+          dictitems:
+            speech:
+              plain:
+                speech: The garden light in the Backyard area has been turned on successfully.
+                extra_data: null
+            response_type: action_done
+            data:
+              targets: []
+              success:
+              - name: Backyard
+                type:
+                - area
+                id: backyard
+              - name: Garden Light
+                type:
+                - entity
+                id: light.garden_light
+              failed: []
+        created: 2026-05-26 20:18:09.460289+00:00
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: The garden light in the Backyard area has been turned on successfully.
+        thinking_content: null
+        tool_calls: null
+        native: null
+        created: 2026-05-26 20:18:09.662125+00:00
+      tools:
+      - name: HassLightSet
+        description: Sets the brightness percentage or color of a light
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x112046c40>, ''domain'': All(<function ensure_list at 0x10d47f8a0>,
+          [<function string at 0x10d49e560>], msg=None), ''color'': <function color_name_to_rgb
+          at 0x10ff36980>, ''temperature'': All(Coerce(int, msg=None), Range(min=0,
+          max=None, min_included=True, max_included=True, msg=None), msg=None), ''brightness'':
+          All(Coerce(int, msg=None), Range(min=0, max=100, min_included=True, max_included=True,
+          msg=None), msg=None)}'
+      - name: HassTurnOn
+        description: Turns on/opens/presses a device or entity. For locks, this performs
+          a 'lock' action. Use for requests like 'turn on', 'activate', 'enable',
+          or 'lock'.
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x112046c40>, ''domain'': All(<function ensure_list at 0x10d47f8a0>,
+          [<function string at 0x10d49e560>], msg=None), ''device_class'': All(<function
+          ensure_list at 0x10d47f8a0>, [In([''outlet'', ''switch'', ''identify'',
+          ''restart'', ''update'', ''awning'', ''blind'', ''curtain'', ''damper'',
+          ''door'', ''garage'', ''gate'', ''shade'', ''shutter'', ''window'', ''water'',
+          ''gas'', ''tv'', ''speaker'', ''receiver''])], msg=None)}'
+      - name: HassTurnOff
+        description: Turns off/closes a device or entity. For locks, this performs
+          an 'unlock' action. Use for requests like 'turn off', 'deactivate', 'disable',
+          or 'unlock'.
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x112046c40>, ''domain'': All(<function ensure_list at 0x10d47f8a0>,
+          [<function string at 0x10d49e560>], msg=None), ''device_class'': All(<function
+          ensure_list at 0x10d47f8a0>, [In([''outlet'', ''switch'', ''identify'',
+          ''restart'', ''update'', ''awning'', ''blind'', ''curtain'', ''damper'',
+          ''door'', ''garage'', ''gate'', ''shade'', ''shutter'', ''window'', ''water'',
+          ''gas'', ''tv'', ''speaker'', ''receiver''])], msg=None)}'
+      - name: HassCancelAllTimers
+        description: Cancels all timers
+        parameters: '{''area'': <function string at 0x10d49e560>}'
+      - name: GetDateTime
+        description: Provides the current date and time.
+        parameters: '{}'
+      - name: GetLiveContext
+        description: 'Provides real-time information about the CURRENT state, value,
+          or mode of devices, sensors, entities, or areas. Use this tool for: 1. Answering
+          questions about current conditions (e.g., ''Is the light on?''). 2. As the
+          first step in conditional actions (e.g., ''If the weather is rainy, turn
+          off sprinklers'' requires checking the weather first).'
+        parameters: '{}'
+    timestamp: 2026-05-26 20:18:07.273552+00:00
+  - event_type: tool_call
+    data:
+      tool_name: HassTurnOn
+      tool_args:
+        name: Backyard Light
+        domain:
+        - light
+    timestamp: 2026-05-26 20:18:07.715306+00:00
+  - event_type: tool_call
+    data:
+      tool_name: HassTurnOn
+      tool_args:
+        name: Backyard Light
+        area: Backyard
+        domain:
+        - light
+    timestamp: 2026-05-26 20:18:08.245497+00:00
+  - event_type: tool_call
+    data:
+      tool_name: GetLiveContext
+      tool_args: {}
+    timestamp: 2026-05-26 20:18:08.740677+00:00
+  - event_type: tool_call
+    data:
+      tool_name: HassTurnOn
+      tool_args:
+        name: Garden Light
+        area: Backyard
+        domain:
+        - light
+    timestamp: 2026-05-26 20:18:09.457823+00:00
+  duration_ms: 2389.674
+  tries: 1

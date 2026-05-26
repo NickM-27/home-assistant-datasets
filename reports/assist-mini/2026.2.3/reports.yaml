@@ -14,4 +14,9 @@
   confidence_interval: 3.9%
   good: 179
   total: 196
+- model_id: qwen3.5-2b
+  good_percent: 81.6%
+  confidence_interval: 5.4%
+  good: 160
+  total: 196
 

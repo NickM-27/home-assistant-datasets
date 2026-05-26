@@ -59,4 +59,24 @@
   confidence_interval: 3.9%
   good: 179
   total: 196
+- model_id-task_name: qwen3.5-2b-eval-test_expect_llm_tool_call_args
+  good_percent: 0.0%
+  confidence_interval: 0.0%
+  good: 0
+  total: 0
+- model_id-task_name: qwen3.5-2b-eval-test_expect_llm_tool_call_name
+  good_percent: 0.0%
+  confidence_interval: 0.0%
+  good: 0
+  total: 0
+- model_id-task_name: qwen3.5-2b-eval-test_expect_response
+  good_percent: 0.0%
+  confidence_interval: 0.0%
+  good: 0
+  total: 0
+- model_id-task_name: qwen3.5-2b-eval-test_expected_states
+  good_percent: 81.6%
+  confidence_interval: 5.4%
+  good: 160
+  total: 196
 
