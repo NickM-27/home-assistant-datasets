@@ -6,10 +6,10 @@ description: |
   OpenAI-compatible server. Developed by Alibaba Cloud, 
   this model is optimized for efficient text processing.
 categories:
-  - google
+  - alibaba
   - local
 urls:
-  - https://huggingface.co/unsloth/gemma-4-26B-A4B-it-GGUF
+  - https://huggingface.co/unsloth/Qwen3.5-2B
 config_entry_data:
   api_key: sk-0000000000000000000
   base_url: http://openai_api_replica:8000/v1
